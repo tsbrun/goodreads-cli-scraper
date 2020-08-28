@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require '/Users/work/Documents/Flatiron/code/cli_project/goodreads_cli_scraper/lib/goodreads_cli_scraper.rb'
+
+GoodreadsCliScraper::CLI.new.call
