@@ -1,0 +1,2 @@
+class GoodreadsCliScraper::Scraper 
+end

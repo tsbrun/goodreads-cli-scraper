@@ -41,3 +41,13 @@ Instance Methods
 
 GoodreadsCliScraper::Scraper 
 
+goodreads genres 
+=> 2 divs 
+=> go into div 1 => grab each genre (text and url)
+=> repeat for div 2
+=> save into Genre.all 
+
+To make Book instances from a genre 
+=> go to chosen genre's url
+=> open 
+
