@@ -3,7 +3,7 @@ class GoodreadsCliScraper::CLI
 def call
     puts "Welcome to the Goodreads CLI Scraper."
 
-    scraper = GoodreadsCliScraper::Scraper.new.get_page
+    scraper = GoodreadsCliScraper::Scraper.new
     scraper.get_genres 
     # initializes instances of Genre and stores them in class variable @@all 
 

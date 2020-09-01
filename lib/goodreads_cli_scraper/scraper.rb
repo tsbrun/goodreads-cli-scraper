@@ -10,10 +10,12 @@ class GoodreadsCliScraper::Scraper
     def self.get_page
         Nokogiri::HTML(open("https://www.goodreads.com/genres"))
     end
-    binding.pry
 
-    # def get_genres
-    # end
+    def get_genres
+        self.get_page.css("div.bigBoxContent.containerWithHeaderContent").css("div.left").css("a.gr-hyperlink")
+        # returns an array of genres with an href attribute and text 
+    end
+    binding.pry
 
     # def get_books 
     # end
