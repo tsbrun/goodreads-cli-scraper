@@ -27,18 +27,23 @@ class GoodreadsCliScraper::Scraper
     end
 
     def get_books(url)
-    ## should take an argument of the genre's url  
-    ## open url 
         Nokogiri::HTML(open("https://www.goodreads.com" + url)).css("div.coverRow").css("div.leftAlignedImage.bookBox").css("div.coverWrapper").each do |a| 
             book = GoodreadsCliScraper::Book.new 
             book.url = a.css("a").first['href']
+            book.genre = GoodreadsCliScraper::Genre.all.find { |genre| genre.url == url }
+            book.genre.books << book
             book.save
         end
-    ## access each book's href attribute 
-    ## open each href 
-    ## gather data + instantiate books 
 
-    ## iterate over "div.coverWrapper"
+        make_books
     end
-    binding.pry
+
+    def make_books
+        GoodreadsCliScraper::Book.all.each do |book|
+            Nokogiri::HTML(open("https://www.goodreads.com/" + book.url))
+            book.title = Nokogiri::HTML(open("https://www.goodreads.com/" + book.url)).css("h1#bookTitle").text.strip
+            book.author = Nokogiri::HTML(open("https://www.goodreads.com/" + book.url)).css("a.authorName").css("span").text.strip
+            book.summary = Nokogiri::HTML(open("https://www.goodreads.com/" + book.url)).css("div#description.readable.stacked").text.strip    
+        end
+    end
 end
