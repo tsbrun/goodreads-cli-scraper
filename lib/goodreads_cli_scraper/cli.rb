@@ -27,7 +27,7 @@ def get_books_by_genre
     puts "Type the name of the genre you want:"
     input = gets.strip.downcase 
 
-    genre = GoodreadsCliScraper::Scraper.Genres.all.select {|genre| genre.name.downcase == input}
+    genre = GoodreadsCliScraper::Genres.all.select {|genre| genre.name.downcase == input}
 
     if genre.books.empty?
         scraper.get_books(genre.url)
