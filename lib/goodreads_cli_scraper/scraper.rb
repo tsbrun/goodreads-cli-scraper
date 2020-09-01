@@ -15,7 +15,6 @@ class GoodreadsCliScraper::Scraper
         self.get_page.css("div.bigBoxContent.containerWithHeaderContent").css("div.left").css("a.gr-hyperlink")
         # returns an array of genres with an href attribute and text 
     end
-    binding.pry
 
     # def get_books 
     # end
