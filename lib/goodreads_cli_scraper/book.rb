@@ -1,5 +1,5 @@
 class GoodreadsCliScraper::Book
-    attr_accessor :title, :genre, :author, :rating, :summary, :url
+    attr_accessor :title, :genre, :author, :summary, :url
 
     @@all = []
 
