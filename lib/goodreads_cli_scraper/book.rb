@@ -1,13 +1,13 @@
 class GoodreadsCliScraper::Book
-    # attr_accessor :title, :genre, :author, :rating, :summary, :url
+    attr_accessor :title, :genre, :author, :rating, :summary, :url
 
-    # @@all = []
+    @@all = []
 
-    # def save 
-    #     @@all << self
-    # end
+    def save 
+        @@all << self
+    end
 
-    # def self.all
-    #     @@all 
-    # end
+    def self.all
+        @@all 
+    end
 end

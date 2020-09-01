@@ -7,7 +7,7 @@ def call
     scraper.make_genres 
     # initializes instances of Genre and stores them in class variable @@all 
 
-    GoodreadsCliScraper::Genres.all.print_genres 
+    GoodreadsCliScraper::Genres.all.each { |genre| puts genre.name } 
     # prints Genre names 
 
     loop do 
@@ -30,8 +30,14 @@ def get_books_by_genre
     genre = GoodreadsCliScraper::Scraper.Genres.all.select {|genre| genre.name.downcase == input}
 
     if genre.books.empty?
-        scraper.genre.get_books
-        genre.print_books
+        # scraper.genre.get_books
+        # genre.print_books
+
+        # open that genre's url
+        scraper.get_books(genre.url)
+        # scrape the url for books 
+        # add those books to the specific genre 
+        # print each book 
     else
         genre.print_books
     end
