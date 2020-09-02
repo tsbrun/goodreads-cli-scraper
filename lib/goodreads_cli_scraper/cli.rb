@@ -4,12 +4,14 @@ class GoodreadsCliScraper::CLI
 
 def call
     puts "Welcome to the Goodreads CLI Scraper."
+    puts "\n"
 
     @scraper = GoodreadsCliScraper::Scraper.new
     @scraper.make_genres 
     # initializes instances of Genre and stores them in class variable @@all 
 
     GoodreadsCliScraper::Genre.all.each { |genre| puts genre.name } 
+    puts "\n"
 
     loop do 
         get_books_by_genre
@@ -18,6 +20,7 @@ def call
         input = gets.strip.downcase 
 
         if input != 'y'
+            puts "Thank you for using the Goodreads CLI Scraper."
             break
         end
     end
