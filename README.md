@@ -20,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the code below and follow the onscreen prompts:
+
+```
+    $ goodreads_cli_scraper
+```
 
 ## Development
 
