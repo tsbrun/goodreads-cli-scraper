@@ -10,10 +10,10 @@ def call
     @scraper.make_genres 
     # initializes instances of Genre and stores them in class variable @@all 
 
-    GoodreadsCliScraper::Genre.all.each { |genre| puts genre.name } 
-    puts "\n"
-
     loop do 
+        GoodreadsCliScraper::Genre.all.each { |genre| puts genre.name } 
+        puts "\n"
+
         get_books_by_genre
         
         puts "Would you like to pick another genre? (y/n)"
