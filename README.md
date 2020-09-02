@@ -23,7 +23,7 @@ Or install it yourself as:
 Type the code below and follow the onscreen prompts:
 
 ```
-    $ goodreads_cli_scraper
+$ goodreads_cli_scraper
 ```
 
 ## Development
