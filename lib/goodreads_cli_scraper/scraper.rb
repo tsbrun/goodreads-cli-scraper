@@ -47,7 +47,7 @@ class GoodreadsCliScraper::Scraper
             Nokogiri::HTML(open("https://www.goodreads.com/" + book.url))
             book.title = Nokogiri::HTML(open("https://www.goodreads.com/" + book.url)).css("h1#bookTitle").text.strip
             book.author = Nokogiri::HTML(open("https://www.goodreads.com/" + book.url)).css("a.authorName").css("span").text.strip
-            book.summary = Nokogiri::HTML(open("https://www.goodreads.com/" + book.url)).css("div#description.readable.stacked").text.strip    
+            book.summary = Nokogiri::HTML(open("https://www.goodreads.com/" + book.url)).css("div#description.readable.stacked").css("span")[1].text  
         end
     end
 end
