@@ -27,12 +27,16 @@ class GoodreadsCliScraper::Scraper
     end
 
     def get_books(url)
-        Nokogiri::HTML(open("https://www.goodreads.com" + url)).css("div.coverRow").css("div.leftAlignedImage.bookBox").css("div.coverWrapper").each do |a| 
+        Nokogiri::HTML(open("https://www.goodreads.com" + url)).css("div.coverRow").css("div.leftAlignedImage.bookBox").css("div.coverWrapper").each.with_index do |a, i| 
+            if i < 6
             book = GoodreadsCliScraper::Book.new 
             book.url = a.css("a").first['href']
             book.genre = GoodreadsCliScraper::Genre.all.find { |genre| genre.url == url }
             book.genre.books << book
             book.save
+            end
+            # limits results in order to cut down on loading time
+            # all results => 70-80 sec vs. 6 results => 12 sec
         end
 
         make_books
