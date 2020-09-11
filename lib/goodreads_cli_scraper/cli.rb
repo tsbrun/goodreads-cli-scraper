@@ -11,7 +11,7 @@ def call
     # initializes instances of Genre and stores them in class variable @@all 
 
     loop do 
-        GoodreadsCliScraper::Genre.all.each { |genre| puts genre.name } 
+        GoodreadsCliScraper::Genre.all.each { |genre| puts genre.name }
         puts "\n"
 
         get_books_by_genre
@@ -33,12 +33,10 @@ def get_books_by_genre
 
     genre = GoodreadsCliScraper::Genre.all.find {|genre| genre.name.downcase == input}
 
-    if genre.books.empty?
-        @scraper.get_books(genre.url)
-        genre.print_books
-    else
-        genre.print_books
-    end
+    
+    @scraper.get_books(genre.url) if genre.books.empty?
+    genre.print_books
 end
 
 end
+
