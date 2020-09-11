@@ -35,8 +35,24 @@ def get_books_by_genre
 
     
     @scraper.get_books(genre.url) if genre.books.empty?
-    genre.print_books
+    print_books(genre)
+end
+
+def print_books(genre)
+    genre.books.each do |book|
+        puts "\n"
+        puts "Title: ".cyan + "#{book.title.light_cyan}"
+        puts "Genre: ".cyan + "#{book.genre.name.light_cyan}"
+        puts "Author: ".cyan + "#{book.author.light_cyan}"
+        puts "\n"
+        puts book.summary.white
+        puts "\n"
+        puts ("https://www.goodreads.com/" + book.url).light_cyan
+        puts "\n"
+    end
 end
 
 end
+
+
 
